@@ -1,0 +1,12 @@
+C:\code learning\backend\publish\backend.exe
+C:\code learning\backend\publish\appsettings.Development.json
+C:\code learning\backend\publish\appsettings.json
+C:\code learning\backend\publish\backend.dll
+C:\code learning\backend\publish\backend.runtimeconfig.json
+C:\code learning\backend\publish\backend.pdb
+C:\code learning\backend\publish\Microsoft.EntityFrameworkCore.dll
+C:\code learning\backend\publish\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\code learning\backend\publish\Microsoft.EntityFrameworkCore.Relational.dll
+C:\code learning\backend\publish\Npgsql.dll
+C:\code learning\backend\publish\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\code learning\backend\publish\backend.deps.json

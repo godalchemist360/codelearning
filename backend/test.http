@@ -1,0 +1,50 @@
+### 變數設定（伺服器網址）
+@baseUrl = http://localhost:5232
+
+### =============================================
+### [1] 取得所有書籤（GET）
+### 按下下方的 "Send Request" 來發送
+### =============================================
+
+GET {{baseUrl}}/api/bookmarks
+Content-Type: application/json
+
+###
+
+### =============================================
+### [2] 新增書籤（POST）
+### Body 是要傳給後端的資料（JSON 格式）
+### =============================================
+
+POST {{baseUrl}}/api/bookmarks
+Content-Type: application/json
+
+{
+    "title": "Google",
+    "url": "https://www.google.com",
+    "note": "搜尋引擎"
+}
+
+###
+
+### =============================================
+### [3] 再新增一個書籤
+### =============================================
+
+POST {{baseUrl}}/api/bookmarks
+Content-Type: application/json
+
+{
+    "title": "GitHub",
+    "url": "https://github.com",
+    "note": "程式碼托管平台"
+}
+
+###
+
+### =============================================
+### [4] 刪除書籤（DELETE）
+### 把網址最後的數字換成你要刪除的書籤 Id
+### =============================================
+
+DELETE {{baseUrl}}/api/bookmarks/1
