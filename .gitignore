@@ -1,20 +1,15 @@
 # ===== 後端（C# .NET）=====
-backend/bin/           # 編譯後的執行檔，自動產生
-backend/obj/           # 編譯暫存檔，自動產生
-backend/publish/       # 部署用的打包資料夾
-backend/publish.zip    # 部署用的壓縮檔
-backend/*.user         # 個人 IDE 設定
+backend/bin/
+backend/obj/
+backend/publish/
+backend/publish.zip
+backend/*.user
 
 # ===== 前端（Next.js）=====
-frontend/node_modules/ # 套件安裝資料夾（很大，不需要上傳）
-frontend/.next/        # Next.js 暫存檔
-frontend/out/          # 打包輸出資料夾
-
-# ===== 敏感資訊 =====
-# 注意：appsettings.json 裡有資料庫密碼
-# 實務上應該加入這裡，但為了學習方便暫時不加
-# appsettings.json
+frontend/node_modules/
+frontend/.next/
+frontend/out/
 
 # ===== 系統檔案 =====
-.DS_Store              # macOS 系統檔
-Thumbs.db              # Windows 系統檔
+.DS_Store
+Thumbs.db
