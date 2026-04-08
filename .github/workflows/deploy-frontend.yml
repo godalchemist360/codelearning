@@ -1,0 +1,47 @@
+# ======================================================
+# .github/workflows/deploy-frontend.yml
+# GitHub Actions 工作流程：自動部署前端到 Azure Static Web Apps
+# 觸發時機：每次推送到 master 分支時自動執行
+# ======================================================
+
+name: 部署前端到 Azure Static Web Apps
+
+on:
+  push:
+    branches:
+      - master   # 只有推送到 master 才會觸發
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest   # 在 GitHub 的 Linux 伺服器上執行
+
+    steps:
+      # 步驟1：把程式碼下載到 GitHub 的伺服器
+      - name: 下載程式碼
+        uses: actions/checkout@v3
+
+      # 步驟2：安裝 Node.js（執行 Next.js 需要）
+      - name: 設定 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 步驟3：安裝套件（等同於手動執行 npm install）
+      - name: 安裝套件
+        working-directory: ./frontend
+        run: npm ci
+
+      # 步驟4：打包前端（等同於手動執行 npm run build）
+      - name: 打包前端
+        working-directory: ./frontend
+        run: npm run build
+
+      # 步驟5：把打包好的檔案上傳到 Azure Static Web Apps
+      - name: 部署到 Azure
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: ./frontend   # 前端原始碼位置
+          output_location: out        # Next.js 打包輸出資料夾

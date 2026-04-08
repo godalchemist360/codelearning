@@ -79,7 +79,7 @@ await fetch(API_URL, {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">書籤筆記</h1>
+      <h1 className="text-2xl font-bold mb-6">書籤筆記 🚀 CI/CD 測試版</h1>
 
       {/* 新增書籤表單 */}
       <div className="bg-gray-50 p-4 rounded-lg mb-6">
