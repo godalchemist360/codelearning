@@ -34,6 +34,9 @@ app.UseCors("AllowFrontend");
 
 // ===== API 端點定義 =====
 
+// [0] 版本確認端點（用來測試 CI/CD 是否成功）
+app.MapGet("/api/version", () => new { version = "v2", message = "CI/CD 自動部署成功！" });
+
 // [1] 取得所有書籤
 app.MapGet("/api/bookmarks", async (AppDbContext db) =>
 {

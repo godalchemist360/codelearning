@@ -1,0 +1,40 @@
+# ======================================================
+# .github/workflows/deploy-backend.yml
+# GitHub Actions 工作流程：自動部署後端到 Azure App Service
+# 觸發時機：每次推送到 master 分支時自動執行
+# ======================================================
+
+name: 部署後端到 Azure App Service
+
+on:
+  push:
+    branches:
+      - master   # 只有推送到 master 才會觸發
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest   # 在 GitHub 的 Linux 伺服器上執行
+
+    steps:
+      # 步驟1：把程式碼下載到 GitHub 的伺服器
+      - name: 下載程式碼
+        uses: actions/checkout@v3
+
+      # 步驟2：安裝 .NET SDK
+      - name: 設定 .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '10.0.x'
+
+      # 步驟3：打包後端（等同於手動執行 dotnet publish）
+      - name: 打包後端
+        working-directory: ./backend
+        run: dotnet publish -c Release -o ./publish
+
+      # 步驟4：把打包好的檔案部署到 Azure App Service
+      - name: 部署到 Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: bookmark-api-app   # Azure App Service 的名稱
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./backend/publish
